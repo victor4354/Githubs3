@@ -1,37 +1,44 @@
-package com.example.loginflowapp
+package com.example.githubs3
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.button.MaterialButton
+import com.example.githubs3.databinding.FragmentLoginBinding // Importación corregida
 
 class LoginFragment : Fragment() {
+
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Configurar navegación para el botón de registro
-        view.findViewById<TextView>(R.id.textRegister).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.textRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
-        // Configurar navegación para restablecer contraseña
-        view.findViewById<TextView>(R.id.textForgotPassword).setOnClickListener {
+        binding.textForgotPassword.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_restorePasswordFragment)
         }
 
-        // Configurar navegación para el botón de login
-        view.findViewById<MaterialButton>(R.id.buttonLogin).setOnClickListener {
+        binding.buttonLogin.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_loaderFragment)
         }
+    }
 
-        return view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

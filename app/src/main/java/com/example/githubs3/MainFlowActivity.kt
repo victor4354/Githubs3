@@ -1,8 +1,8 @@
-package com.example.loginflowapp
+package com.example.githubs3
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.loginflowapp.databinding.ActivityMainFlowBinding
+import com.example.githubs3.databinding.ActivityMainFlowBinding // Importación corregida
 
 class MainFlowActivity : AppCompatActivity() {
 
@@ -13,5 +13,6 @@ class MainFlowActivity : AppCompatActivity() {
         binding = ActivityMainFlowBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Esta actividad puede permanecer vacía según las especificaciones
     }
 }
