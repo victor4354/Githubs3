@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_registerFragment_to_personalInfoFragment"
             app:destination="@id/personalInfoFragment"/>
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"/>
     </fragment>
 
     <!-- Personal Info Fragment -->
@@ -46,6 +49,9 @@
         <action
             android:id="@+id/action_personalInfoFragment_to_loaderFragment"
             app:destination="@id/loaderFragment"/>
+        <action
+            android:id="@+id/action_personalInfoFragment_to_permissionFragment"
+            app:destination="@id/permissionFragment"/>
     </fragment>
 
     <!-- Personal Info Variant Fragment -->
@@ -69,6 +75,13 @@
             android:id="@+id/action_restorePasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment"/>
     </fragment>
+
+    <!-- Permission Fragment -->
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="com.example.githubs3.PermissionFragment"
+        android:label="fragment_permission"
+        tools:layout="@layout/fragment_permission"/>
 
     <!-- Loader Fragment -->
     <fragment
@@ -96,6 +109,6 @@
         <action
             android:id="@+id/action_secondFragment_to_firstFragment"
             app:destination="@id/firstFragment"/>
-    </fragment>
-
-</navigation>
+    </action>
+</fragment>
+    </navigation>
