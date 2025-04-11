@@ -31,11 +31,11 @@ class LoginFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.textRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            findNavController().navigate(R.id.action_login_to_register)
         }
 
         binding.textForgotPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_restorePasswordFragment)
+            findNavController().navigate(R.id.action_login_to_password_reset)
         }
 
         binding.buttonLogin.setOnClickListener {
@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun showLoader() {
-        findNavController().navigate(R.id.action_loginFragment_to_loaderFragment)
+        findNavController().navigate(R.id.action_login_to_loader)
     }
 
     private fun performLogin() {
@@ -82,7 +82,8 @@ class LoginFragment : Fragment() {
             email = email,
             password = password,
             onSuccess = {
-                findNavController().navigate(R.id.action_loaderFragment_to_mainFlowActivity)
+
+                findNavController().navigate(R.id.mainFlowActivity)
             },
             onError = { errorMessage ->
                 findNavController().popBackStack() // Regresa al LoginFragment

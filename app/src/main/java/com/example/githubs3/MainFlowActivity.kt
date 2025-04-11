@@ -2,7 +2,7 @@ package com.example.githubs3
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.githubs3.databinding.ActivityMainFlowBinding // Importación corregida
+import com.example.githubs3.databinding.ActivityMainFlowBinding
 
 class MainFlowActivity : AppCompatActivity() {
 
