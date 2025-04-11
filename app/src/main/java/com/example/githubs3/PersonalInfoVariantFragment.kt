@@ -16,7 +16,11 @@ class PersonalInfoVariantFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_personal_info_variant, container, false)
 
         view.findViewById<MaterialButton>(R.id.buttonContinue).setOnClickListener {
-            findNavController().navigate(R.id.action_personalInfoVariantFragment_to_loaderFragment)
+            // Since there's no direct action defined in the nav graph, navigate to loader directly
+            findNavController().navigate(R.id.loaderFragment)
+
+            // Alternative: If you prefer to use navigateUp() to go back
+            // findNavController().navigateUp()
         }
 
         return view
