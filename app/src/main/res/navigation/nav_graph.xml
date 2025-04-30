@@ -110,7 +110,7 @@
     <!-- First Fragment -->
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.githubs3.FirstFragment"
+        android:name="com.example.githubs3.WeatherFragment"
         android:label="Primer Fragmento"
         tools:layout="@layout/fragment_first">
 

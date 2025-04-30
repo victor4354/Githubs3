@@ -9,6 +9,9 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        }
     }
     plugins {
         id("com.google.gms.google-services") version "4.4.0"
@@ -21,6 +24,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        }
     }
 }
 
