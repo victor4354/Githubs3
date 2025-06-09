@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.githubs3.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/registerFragment"/>
+
+        <action
+            android:id="@+id/action_login_to_password_reset"
+            app:destination="@id/restorePasswordFragment"/>
+
+        <action
+            android:id="@+id/action_login_to_loader"
+            app:destination="@id/loaderFragment"/>
+
+        <action
+            android:id="@+id/action_login_to_first"
+            app:destination="@id/firstFragment"/>
+    </fragment>
+
+    <!-- Register Fragment -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.githubs3.RegisterFragment"
+        android:label="Registro"
+        tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/action_register_to_personal_info"
+            app:destination="@id/personalInfoFragment"/>
+
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <!-- Personal Info Fragment -->
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.example.githubs3.PersonalInfoFragment"
+        android:label="Información Personal"
+        tools:layout="@layout/fragment_personal_info">
+
+        <argument
+            android:name="email"
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_personal_info_to_loader"
+            app:destination="@id/loaderFragment"/>
+    </fragment>
+
+    <!-- Password Reset Fragment -->
+    <fragment
+        android:id="@+id/restorePasswordFragment"
+        android:name="com.example.githubs3.RestorePasswordFragment"
+        android:label="Recuperar Contraseña"
+        tools:layout="@layout/fragment_restore_password">
+
+        <action
+            android:id="@+id/action_password_reset_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/restorePasswordFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <!-- Loader Fragment -->
+    <fragment
+        android:id="@+id/loaderFragment"
+        android:name="com.example.githubs3.LoaderFragment"
+        android:label="Cargando..."
+        tools:layout="@layout/fragment_loader">
+
+        <action
+            android:id="@+id/action_loader_to_main"
+            app:destination="@id/mainFlowActivity"/>
+
+        <action
+            android:id="@+id/action_loader_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <!-- Main Flow Activity -->
+    <activity
+        android:id="@+id/mainFlowActivity"
+        android:name="com.example.githubs3.MainFlowActivity"
+        android:label="Pantalla Principal"
+        tools:layout="@layout/activity_main_flow">
+
+        <argument
+            android:name="userEmail"
+            app:argType="string"/>
+    </activity>
+
+    <!-- First Fragment -->
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.githubs3.FirstFragment"
+        android:label="Primer Fragmento"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment"/>
+    </fragment>
+
+    <!-- Second Fragment -->
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.example.githubs3.SecondFragment"
+        android:label="Segundo Fragmento"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_secondFragment_to_firstFragment"
+            app:destination="@id/firstFragment"/>
+    </fragment>
+    <!-- Personal Info Variant Fragment -->
+    <fragment
+        android:id="@+id/personalInfoVariantFragment"
+        android:name="com.example.githubs3.PersonalInfoVariantFragment"
+        android:label="Información Personal Variante"
+        tools:layout="@layout/fragment_personal_info_variant">
+
+        <action
+            android:id="@+id/action_personalInfoVariantFragment_to_loaderFragment"
+            app:destination="@id/loaderFragment"/>
+    </fragment>
+</navigation>

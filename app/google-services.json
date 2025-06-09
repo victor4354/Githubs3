@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558950207062",
+    "project_id": "githubs3",
+    "storage_bucket": "githubs3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558950207062:android:73af25105b1a02966ab5f7",
+        "android_client_info": {
+          "package_name": "com.example.githubs3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATuRITPK3g9Sz2YeW6CUdwB4U6Uw3BRxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
