@@ -1,4 +1,4 @@
-package com.example.githubs3
+package com.example.githubs3.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
