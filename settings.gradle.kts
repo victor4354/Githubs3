@@ -26,4 +26,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Githubs3"
 include(":app")
- 

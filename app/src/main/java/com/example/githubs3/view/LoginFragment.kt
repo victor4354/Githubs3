@@ -1,5 +1,6 @@
 package com.example.githubs3.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,23 +11,27 @@ import androidx.navigation.fragment.findNavController
 import com.example.githubs3.R
 import com.example.githubs3.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding ?: throw IllegalStateException("Binding is null")
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        auth = Firebase.auth
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupClickListeners()
     }
 
@@ -52,7 +57,6 @@ class LoginFragment : Fragment() {
         val password = binding.editTextPassword.text.toString()
         var isValid = true
 
-        // Validación de email
         if (email.isEmpty() || !PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.textInputLayoutEmail.error = "Correo electrónico inválido"
             isValid = false
@@ -60,7 +64,6 @@ class LoginFragment : Fragment() {
             binding.textInputLayoutEmail.error = null
         }
 
-        // Validación de contraseña
         if (password.isEmpty() || password.length < 6) {
             binding.textInputLayoutPassword.error = "La contraseña debe tener al menos 6 caracteres"
             isValid = false
@@ -79,18 +82,16 @@ class LoginFragment : Fragment() {
         val email = binding.editTextEmail.text.toString()
         val password = binding.editTextPassword.text.toString()
 
-        FirebaseAuthManager.loginUser(
-            email = email,
-            password = password,
-            onSuccess = {
-
-                findNavController().navigate(R.id.mainFlowActivity)
-            },
-            onError = { errorMessage ->
-                findNavController().popBackStack() // Regresa al LoginFragment
-                showError(errorMessage)
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(requireActivity(), MainFlowActivity::class.java))
+                    requireActivity().finish()
+                } else {
+                    findNavController().popBackStack()
+                    showError("Authentication failed: ${task.exception?.message}")
+                }
             }
-        )
     }
 
     private fun showError(message: String) {

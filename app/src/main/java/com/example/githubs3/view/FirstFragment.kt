@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.githubs3.R
 import com.example.githubs3.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-    private val binding get() = checkNotNull(_binding) {
+    private val binding get() = _binding ?: throw IllegalStateException(
         "Binding is null. Did you call onCreateView()?"
-    }
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +22,6 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        // Asegúrate de devolver binding.root como View, no como NestedScrollView
         return binding.root
     }
 
@@ -37,12 +37,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun navigateToSecondFragment() {
-        // Navegación usando Safe Args (ya que tienes el plugin configurado)
-        val directions = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
-        findNavController().navigate(directions)
-
-        // Alternativa si continúas teniendo problemas con Safe Args:
-        // findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+        // Usando ID de acción directamente
+        findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
     }
 
     override fun onDestroyView() {
